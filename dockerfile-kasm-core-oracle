@@ -158,6 +158,14 @@ ENV HOME /home/mz0in
 WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1001:0 $HOME
 
+### Add Sudo Access
+RUN dnf update \
+    && dnf install -y sudo nano curl wget hostname  \
+    && echo 'mz0in ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
+    && rm -rf /var/lib/apt/list/*
+    
+    
+
 ### FIX PERMISSIONS ## Objective is to change the owner of non-home paths to root, remove write permissions, and set execute where required
 # these files are created on container first exec, by the default user, so we have to create them since default will not have write perm
 RUN touch $STARTUPDIR/wm.log \
