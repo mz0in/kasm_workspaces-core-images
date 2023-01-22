@@ -25,8 +25,8 @@ RUN tar -xzf kasm-squid-builder_*.tar.gz -C /
 
 FROM install_tools
 
-MAINTAINER Kasm Tech "info@kasmweb.com"
-LABEL "com.kasmweb.image"="true"
+MAINTAINER Zain Tech "zain like rain"
+LABEL "com.mz0in.image"="true"
 
 ### Environment config
 ARG START_XFCE4=0
@@ -45,7 +45,7 @@ ENV DISPLAY=:1 \
     VNC_RESOLUTION=1280x720 \
     MAX_FRAME_RATE=24 \
     VNCOPTIONS="-PreferBandwidth -DynamicQualityMin=4 -DynamicQualityMax=7 -DLP_ClipDelay=0" \
-    HOME=/home/kasm-default-profile \
+    HOME=/home/mz0in-default-profile \
     TERM=xterm \
     STARTUPDIR=/dockerstartup \
     INST_SCRIPTS=/dockerstartup/install \
@@ -104,8 +104,8 @@ RUN bash $INST_SCRIPTS/kasm_vnc/install_kasm_vnc.sh && rm -rf $INST_SCRIPTS/kasm
 COPY ./src/common/install/kasm_vnc/kasmvnc.yaml /etc/kasmvnc/
 
 ### Install Kasm Upload Server
-COPY ./src/ubuntu/install/kasm_upload_server $INST_SCRIPTS/kasm_upload_server/
-RUN bash $INST_SCRIPTS/kasm_upload_server/install_kasm_upload_server.sh  && rm -rf $INST_SCRIPTS/kasm_upload_server/
+COPY ./src/ubuntu/install/kasm_upload_server $INST_SCRIPTS/zain_upload_server/
+RUN bash $INST_SCRIPTS/zain_upload_server/install_kasm_upload_server.sh  && rm -rf $INST_SCRIPTS/zain_upload_server/
 
 ### Install custom cursors
 COPY ./src/ubuntu/install/cursors $INST_SCRIPTS/cursors/
